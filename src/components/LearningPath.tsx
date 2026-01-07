@@ -32,7 +32,7 @@ export default function LearningPath() {
                 <h2 className="text-6xl md:text-8xl font-black mb-8 tracking-tighter dark:text-white uppercase font-display">
                     Level Select
                 </h2>
-                <p className="text-2xl text-gray-500 dark:text-gray-400 max-w-2xl mx-auto font-medium">
+                <p className="text-2xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-medium">
                     Choose your mission. Unlock new skills. Defeat the final boss.
                 </p>
             </div>
@@ -138,7 +138,7 @@ function LevelCard({ lesson, index }: { lesson: SyllabusItem; index: number }) {
                                 {lesson.title.split(":")[1]?.trim() || lesson.title}
                             </h3>
 
-                            <p className="text-lg text-gray-500 dark:text-gray-400 mb-8 font-medium leading-relaxed">
+                            <p className="text-lg text-gray-700 dark:text-gray-400 mb-8 font-medium leading-relaxed">
                                 {lesson.description}
                             </p>
 
