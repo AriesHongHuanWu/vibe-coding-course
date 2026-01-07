@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Inter, Outfit } from "next/font/google";
+import { Inter, Outfit, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
+const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space" });
 
 export const metadata: Metadata = {
   title: "Vibe Coding | The New Way to Build",
@@ -28,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-TW" suppressHydrationWarning>
-      <body className={cn(inter.variable, outfit.variable, "antialiased bg-background text-foreground bg-dot-pattern min-h-screen")}>
+      <body className={cn(inter.variable, outfit.variable, spaceGrotesk.variable, "antialiased bg-background text-foreground bg-dot-pattern min-h-screen")}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

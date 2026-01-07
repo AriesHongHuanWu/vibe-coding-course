@@ -9,7 +9,7 @@
   --color-google-grey: #F1F3F4;
 
   --font-sans: 'Inter', system-ui, sans-serif;
-  --font-display: 'Outfit', system-ui, sans-serif;
+  --font-display: var(--font-space), 'Outfit', system-ui, sans-serif;
 }
 
 @layer utilities {
@@ -22,21 +22,31 @@
 :root {
   --background: #ffffff;
   --foreground: #1a1a1a;
-  --card: #ffffff;
-  --card-foreground: #1a1a1a;
-  --border: #e5e7eb;
+
+  /* Semantic Colors */
+  --card-bg: #ffffff;
+  --card-border: #e5e7eb;
+  --card-hover-border: #4285F4;
+  --text-primary: #1a1a1a;
+  --text-secondary: #4b5563;
+  --accent-glow: 255, 255, 255;
+  /* RGB for rgba usage */
 }
 
 .dark {
   --background: #202124;
   /* Google Dark Grey */
   --foreground: #e8eaed;
-  --card: #303134;
-  --card-foreground: #e8eaed;
-  --border: #5f6368;
+
+  /* Semantic Colors */
+  --card-bg: #303134;
+  --card-border: #5f6368;
+  --card-hover-border: #8ab4f8;
+  --text-primary: #e8eaed;
+  --text-secondary: #9aa0a6;
+  --accent-glow: 138, 180, 248;
 
   --color-google-blue: #8ab4f8;
-  /* Lighter Blue for Dark Mode */
   --color-google-red: #f28b82;
   --color-google-yellow: #fdd663;
   --color-google-green: #81c995;

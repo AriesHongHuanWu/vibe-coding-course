@@ -1,130 +1,167 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useSpring } from "framer-motion";
 import { type SyllabusItem, syllabus } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { CheckCircle, Lock, MapPin, Star } from "lucide-react";
+import { CheckCircle, Lock, Trophy, Star, ChevronRight, Gamepad2 } from "lucide-react";
+import { useRef } from "react";
 
 export default function LearningPath() {
+    const { scrollYProgress } = useScroll();
+    const scaleX = useSpring(scrollYProgress, {
+        stiffness: 100,
+        damping: 30,
+        restDelta: 0.001
+    });
+
     return (
-        <section className="py-24 px-6 max-w-5xl mx-auto overflow-hidden">
-            <div className="text-center mb-20 relative">
+        <section className="py-24 px-4 md:px-8 max-w-7xl mx-auto relative overflow-hidden">
+
+            {/* Sticky Level Progress Bar */}
+            <motion.div className="fixed top-0 left-0 right-0 h-2 bg-gradient-to-r from-google-blue via-google-red to-google-yellow transform origin-left z-50 opacity-80" style={{ scaleX }} />
+
+            <div className="text-center mb-24 relative z-10">
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 font-bold text-sm mb-6"
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-bold text-sm mb-8 shadow-xl"
                 >
-                    <MapPin size={16} /> 你的學習地圖
+                    <Gamepad2 size={18} /> WORLD MAP SELECT
                 </motion.div>
-                <h2 className="text-5xl font-black mb-6 dark:text-gray-100">The Path to Pro</h2>
-                <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                    這不是傳統課程，這是一場 RPG 冒險。從 LV.1 新手村出發，一路升級到 LV.99 全端大師。
+                <h2 className="text-6xl md:text-8xl font-black mb-8 tracking-tighter dark:text-white uppercase font-display">
+                    Level Select
+                </h2>
+                <p className="text-2xl text-gray-500 dark:text-gray-400 max-w-2xl mx-auto font-medium">
+                    Choose your mission. Unlock new skills. Defeat the final boss.
                 </p>
             </div>
 
-            <div className="relative space-y-24">
-                {/* Connecting Line (Dashed) */}
-                <div className="absolute left-1/2 top-10 bottom-10 w-1 border-r-2 border-dashed border-gray-300 dark:border-gray-700 -translate-x-1/2 z-0 hidden md:block" />
+            <div className="grid grid-cols-1 gap-32 relative">
+                {/* Connecting Line */}
+                <div className="absolute left-4 md:left-1/2 top-20 bottom-20 w-1 bg-gradient-to-b from-transparent via-gray-300 dark:via-gray-700 to-transparent -translate-x-1/2 pointer-events-none" />
 
-                {/* Prerequisite Node */}
-                <div className="relative z-10 flex flex-col items-center">
-                    <motion.div
-                        initial={{ scale: 0 }}
-                        whileInView={{ scale: 1 }}
-                        viewport={{ once: true }}
-                        className="w-16 h-16 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 flex items-center justify-center font-bold text-xl shadow-xl ring-8 ring-white dark:ring-gray-950"
-                    >
-                        START
-                    </motion.div>
-                    <div className="mt-4 font-bold text-gray-500 uppercase tracking-widest text-sm">準備開始</div>
+                {/* Tutorial / Start Node */}
+                <div className="flex flex-col items-center relative z-10 transition-transform hover:scale-105 duration-300 cursor-default">
+                    <div className="w-24 h-24 rounded-3xl bg-gray-900 dark:bg-white text-white dark:text-gray-900 flex items-center justify-center shadow-2xl rotate-3 mb-4 ring-4 ring-white dark:ring-gray-900 relative">
+                        <div className="absolute inset-0 bg-white/20 animate-pulse rounded-3xl" />
+                        <span className="font-display font-black text-2xl">START</span>
+                    </div>
+                    <div className="bg-white dark:bg-gray-800 px-4 py-1 rounded-full text-xs font-bold border border-gray-200 dark:border-gray-700">
+                        PWR: 0
+                    </div>
                 </div>
 
                 {syllabus.map((lesson, index) => (
-                    <PathNode key={lesson.id} lesson={lesson} index={index} />
+                    <LevelCard key={lesson.id} lesson={lesson} index={index} />
                 ))}
 
                 {/* Unlock Node */}
-                <div className="relative z-10 flex flex-col items-center">
-                    <Link href="/resources" className="group">
+                <div className="relative z-10 flex flex-col items-center group">
+                    <Link href="/resources">
                         <motion.div
-                            whileHover={{ scale: 1.1, rotate: 10 }}
-                            className="w-20 h-20 rounded-2xl bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center text-white shadow-xl ring-8 ring-white dark:ring-gray-950 relative"
+                            whileHover={{ scale: 1.1, rotate: -5 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="w-32 h-32 rounded-[2rem] bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center text-white shadow-[0_20px_50px_rgba(251,188,5,0.3)] ring-8 ring-white dark:ring-gray-950 relative overflow-hidden"
                         >
-                            <Lock size={32} className="group-hover:hidden" />
-                            <Star size={32} className="hidden group-hover:block" />
+                            <div className="absolute inset-0 bg-[url('/noise.png')] opacity-20 mix-blend-overlay" />
+                            <Lock size={48} className="group-hover:hidden transition-all" />
+                            <Trophy size={48} className="hidden group-hover:block transition-all animate-bounce" />
 
-                            <div className="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full animate-bounce">
-                                UNLOCK
+                            <div className="absolute bottom-4 text-xs font-black uppercase tracking-widest">
+                                The Loot
                             </div>
                         </motion.div>
                     </Link>
-                    <div className="mt-6 font-bold text-xl dark:text-white">資源寶庫 (Resources)</div>
-                    <p className="text-gray-500 text-sm mt-1">取得所有神級工具</p>
+                    <h3 className="mt-8 font-black text-3xl dark:text-white uppercase tracking-tight">Resource Vault</h3>
+                    <p className="text-gray-500 font-bold">Unlocks at Level 99</p>
                 </div>
             </div>
         </section>
     );
 }
 
-function PathNode({ lesson, index }: { lesson: SyllabusItem; index: number }) {
+function LevelCard({ lesson, index }: { lesson: SyllabusItem; index: number }) {
     const isEven = index % 2 === 0;
+    const ref = useRef(null);
 
     return (
         <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
+            ref={ref}
+            initial={{ opacity: 0, x: isEven ? -50 : 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ duration: 0.8, type: "spring" }}
             className={cn(
-                "relative z-10 flex flex-col md:flex-row items-center gap-8 md:gap-16",
+                "relative z-10 flex flex-col md:flex-row items-center gap-12 group",
                 isEven ? "md:flex-row-reverse" : ""
             )}
         >
-            {/* Timeline Dot */}
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-gray-300 dark:bg-gray-700 rounded-full ring-4 ring-white dark:ring-gray-950 hidden md:block" />
+            {/* Connector Dot */}
+            <div className="absolute left-4 md:left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white dark:bg-gray-900 rounded-full border-4 border-gray-200 dark:border-gray-700 z-20 group-hover:border-google-blue transition-colors duration-500 hidden md:block">
+                <div className="w-full h-full rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-google-blue transition-colors duration-500" />
+            </div>
 
-            {/* Content Card */}
-            <div className="flex-1 w-full md:w-auto">
-                <Link href={`/lessons/${lesson.id.replace("lesson-", "")}`} className="block group">
-                    <div className={cn(
-                        "p-8 rounded-3xl border-2 bg-white dark:bg-gray-800 transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-2xl relative overflow-hidden",
-                        lesson.color.replace("bg-", "border-").replace("text-", "dark:border-")
-                    )}>
-                        {/* Background Glow */}
+            {/* The Card */}
+            <div className="flex-1 w-full md:w-auto md:max-w-xl perspective-1000">
+                <Link href={`/lessons/${lesson.id.replace("lesson-", "")}`} className="block">
+                    <motion.div
+                        whileHover={{ rotateY: isEven ? 5 : -5, scale: 1.02 }}
+                        className={cn(
+                            "relative overflow-hidden rounded-[2.5rem] bg-white dark:bg-[var(--card-bg)] border-2 border-transparent p-1 shadow-2xl transition-all duration-500",
+                            "hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)]",
+                            "group-hover:border-[var(--card-hover-border)]"
+                        )}
+                    >
                         <div className={cn(
-                            "absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity",
-                            lesson.color
+                            "absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-transparent via-transparent to-google-blue/5 pointer-events-none"
                         )} />
 
-                        <div className="flex justify-between items-start mb-6">
-                            <span className={cn(
-                                "px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider",
-                                lesson.color
-                            )}>
-                                Level {index + 1}
-                            </span>
-                            <span className="text-gray-400 font-mono text-xs flex items-center gap-1">
-                                ⏱️ {lesson.duration}
-                            </span>
-                        </div>
+                        <div className="bg-gray-50 dark:bg-gray-900/50 rounded-[2.2rem] p-8 md:p-10 h-full">
+                            <div className="flex justify-between items-start mb-8">
+                                <div className={cn(
+                                    "flex flex-col items-center justify-center w-16 h-16 rounded-2xl font-black text-2xl shadow-inner",
+                                    lesson.color
+                                )}>
+                                    <span className="text-[10px] opacity-70 uppercase tracking-wider">Lvl</span>
+                                    0{index + 1}
+                                </div>
+                                <div className="flex flex-col items-end">
+                                    <span className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-1">Mission Time</span>
+                                    <span className="font-mono font-bold text-gray-800 dark:text-gray-200 bg-gray-200 dark:bg-gray-800 px-3 py-1 rounded-lg">
+                                        {lesson.duration}
+                                    </span>
+                                </div>
+                            </div>
 
-                        <h3 className="text-3xl font-bold mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                            {lesson.title.split(":")[1] || lesson.title}
-                        </h3>
-                        <p className="text-gray-600 dark:text-gray-400 mb-6 line-clamp-2">
-                            {lesson.description}
-                        </p>
+                            <h3 className="text-4xl md:text-5xl font-black mb-6 leading-[0.9] text-gray-900 dark:text-white group-hover:text-google-blue transition-colors font-display">
+                                {lesson.title.split(":")[1]?.trim() || lesson.title}
+                            </h3>
 
-                        <div className="flex items-center gap-2 text-sm font-bold text-gray-500 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">
-                            <CheckCircle size={16} className="text-green-500" />
-                            <span>核心目標: {lesson.goal}</span>
+                            <p className="text-lg text-gray-500 dark:text-gray-400 mb-8 font-medium leading-relaxed">
+                                {lesson.description}
+                            </p>
+
+                            <div className="flex items-center gap-4 pt-8 border-t border-gray-100 dark:border-gray-800">
+                                <span className="flex items-center gap-2 text-sm font-bold text-gray-400 uppercase tracking-wider group-hover:text-google-blue transition-colors">
+                                    Enter Mission <ChevronRight size={16} />
+                                </span>
+                                <div className="flex-1" />
+                                <div className="flex gap-2">
+                                    {/* Mock Achievement Badges */}
+                                    <div className="w-8 h-8 rounded-full bg-yellow-100 dark:bg-yellow-900/30 flex items-center justify-center text-yellow-600 dark:text-yellow-400" title="Gold Star">
+                                        <Star size={14} fill="currentColor" />
+                                    </div>
+                                    <div className="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400" title="Completed">
+                                        <CheckCircle size={14} />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    </motion.div>
                 </Link>
             </div>
 
-            {/* Empty Space for alignment */}
             <div className="flex-1 hidden md:block" />
         </motion.div>
     );
