@@ -29,7 +29,7 @@ export default function BentoGrid() {
                         target="_blank"
                         key={tool.name}
                         className={cn(
-                            "group relative p-6 rounded-3xl overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-xl border border-transparent dark:border-gray-700/30",
+                            "group relative p-6 rounded-3xl overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-xl border border-transparent dark:border-[var(--card-border)] bg-gray-50 dark:bg-[var(--card-bg)]",
                             tool.className
                         )}
                     >
@@ -48,8 +48,8 @@ export default function BentoGrid() {
                                         </span>
                                     )}
                                 </div>
-                                <h3 className="text-xl font-bold mb-1">{tool.name}</h3>
-                                <p className="text-sm opacity-80 line-clamp-2">{tool.description}</p>
+                                <h3 className="text-xl font-black mb-1 font-display">{tool.name}</h3>
+                                <p className="text-sm opacity-80 line-clamp-2 font-medium">{tool.description}</p>
                             </div>
                         </div>
 

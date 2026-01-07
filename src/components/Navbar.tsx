@@ -5,60 +5,59 @@ import { ThemeToggle } from "./ThemeToggle";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
+import { Gamepad2, Home, Library, Map } from "lucide-react";
 
 export default function Navbar() {
     const pathname = usePathname();
 
     const navItems = [
-        { name: "首頁", path: "/" },
-        { name: "Lesson 1: AI 魔法", path: "/lessons/1" },
-        { name: "Lesson 2: API 串接", path: "/lessons/2" },
-        { name: "工具資源", path: "/resources" },
+        { name: "HQ", path: "/", icon: Home },
+        { name: "Lvl 1", path: "/lessons/1", icon: Gamepad2 },
+        { name: "Lvl 2", path: "/lessons/2", icon: Map },
+        { name: "Inv", path: "/resources", icon: Library },
     ];
 
     return (
-        <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 transition-colors">
-            <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        <nav className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
+            <div className="bg-white/90 dark:bg-[#202124]/90 backdrop-blur-xl border border-gray-200 dark:border-gray-700 shadow-2xl rounded-full px-2 py-2 flex items-center gap-1 pointer-events-auto ring-1 ring-black/5 dark:ring-white/10">
 
-                {/* Logo */}
-                <Link href="/" className="font-display font-bold text-xl tracking-tight hidden md:block">
-                    Vibe Coding
-                </Link>
-                <Link href="/" className="font-display font-bold text-xl tracking-tight md:hidden">
+                {/* Logo (Mobile Hidden / Desktop Small) */}
+                <Link href="/" className="px-4 font-display font-black text-lg tracking-tight hidden md:block text-gray-900 dark:text-white mr-2">
                     VC
                 </Link>
 
-                {/* Links */}
-                <div className="flex items-center gap-1 md:gap-6">
-                    {navItems.map((item) => {
-                        const isActive = pathname === item.path;
+                {/* Tabs */}
+                {navItems.map((item) => {
+                    const isActive = pathname === item.path;
 
-                        return (
-                            <Link
-                                key={item.path}
-                                href={item.path}
-                                className={cn(
-                                    "relative px-3 py-1.5 text-sm font-medium transition-colors hover:text-google-blue dark:hover:text-google-blue",
-                                    isActive ? "text-gray-900 dark:text-white" : "text-gray-500 dark:text-gray-400"
-                                )}
-                            >
-                                {item.name}
-                                {isActive && (
-                                    <motion.div
-                                        layoutId="navbar-indicator"
-                                        className="absolute inset-0 bg-gray-100 dark:bg-gray-800 rounded-full -z-10"
-                                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                                    />
-                                )}
-                            </Link>
-                        )
-                    })}
-                </div>
+                    return (
+                        <Link
+                            key={item.path}
+                            href={item.path}
+                            className={cn(
+                                "relative px-4 py-2 rounded-full text-sm font-bold transition-all flex items-center gap-2",
+                                isActive ? "text-white dark:text-gray-900" : "text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
+                            )}
+                        >
+                            {isActive && (
+                                <motion.div
+                                    layoutId="navbar-tab"
+                                    className="absolute inset-0 bg-gray-900 dark:bg-white rounded-full shadow-lg"
+                                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                />
+                            )}
+                            <span className="relative z-10 flex items-center gap-2">
+                                <item.icon size={16} />
+                                <span className={cn(isActive ? "block" : "hidden md:block")}>{item.name}</span>
+                            </span>
+                        </Link>
+                    )
+                })}
+
+                <div className="w-px h-6 bg-gray-200 dark:bg-gray-700 mx-1" />
 
                 {/* Toggle */}
-                <div className="flex items-center gap-4">
-                    <ThemeToggle />
-                </div>
+                <ThemeToggle />
             </div>
         </nav>
     );
