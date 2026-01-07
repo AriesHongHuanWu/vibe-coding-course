@@ -7,7 +7,7 @@
   --color-google-yellow: #FBBC05;
   --color-google-green: #34A853;
   --color-google-grey: #F1F3F4;
-  
+
   --font-sans: 'Inter', system-ui, sans-serif;
   --font-display: 'Outfit', system-ui, sans-serif;
 }
@@ -19,12 +19,50 @@
   }
 }
 
-body {
-  background-color: #ffffff;
-  color: #1a1a1a;
-  font-family: var(--font-sans);
+:root {
+  --background: #ffffff;
+  --foreground: #1a1a1a;
+  --card: #ffffff;
+  --card-foreground: #1a1a1a;
+  --border: #e5e7eb;
 }
 
-h1, h2, h3, h4, h5, h6 {
+.dark {
+  --background: #202124;
+  /* Google Dark Grey */
+  --foreground: #e8eaed;
+  --card: #303134;
+  --card-foreground: #e8eaed;
+  --border: #5f6368;
+
+  --color-google-blue: #8ab4f8;
+  /* Lighter Blue for Dark Mode */
+  --color-google-red: #f28b82;
+  --color-google-yellow: #fdd663;
+  --color-google-green: #81c995;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-display);
+}
+
+.bg-dot-pattern {
+  background-image: radial-gradient(#E5E7EB 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.dark .bg-dot-pattern {
+  background-image: radial-gradient(#3c4043 1px, transparent 1px);
 }

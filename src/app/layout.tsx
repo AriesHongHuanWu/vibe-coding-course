@@ -11,15 +11,31 @@ export const metadata: Metadata = {
   description: "Learn how to build websites and apps using AI tools. A course for the next generation of developers.",
 };
 
+
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { ThemeToggle } from "@/components/ThemeToggle";
+
+// ... imports remain the same
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={cn(inter.variable, outfit.variable, "antialiased bg-white bg-dot-pattern min-h-screen")}>
-        {children}
+    <html lang="zh-TW" suppressHydrationWarning>
+      <body className={cn(inter.variable, outfit.variable, "antialiased bg-background text-foreground bg-dot-pattern min-h-screen")}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="fixed top-6 right-6 z-50">
+            <ThemeToggle />
+          </div>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
