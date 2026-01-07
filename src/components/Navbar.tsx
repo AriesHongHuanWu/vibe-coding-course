@@ -36,13 +36,13 @@ export default function Navbar() {
                             href={item.path}
                             className={cn(
                                 "relative px-4 py-2 rounded-full text-sm font-bold transition-all flex items-center gap-2",
-                                isActive ? "text-white dark:text-gray-900" : "text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
+                                isActive ? "text-google-blue dark:text-google-blue" : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200"
                             )}
                         >
                             {isActive && (
                                 <motion.div
                                     layoutId="navbar-tab"
-                                    className="absolute inset-0 bg-gray-900 dark:bg-white rounded-full shadow-lg"
+                                    className="absolute inset-0 bg-blue-50 dark:bg-blue-900/20 rounded-full"
                                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                                 />
                             )}
