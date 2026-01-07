@@ -1,5 +1,5 @@
 import { syllabus } from "@/lib/data";
-import { ArrowRight, Calendar, CheckCircle, Clock } from "lucide-react";
+import { ArrowRight, CheckCircle, Clock, ChevronRight, Gamepad2, Target, Code2 } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -20,77 +20,109 @@ export default async function LessonPage({ params }: { params: Promise<{ id: str
     }
 
     return (
-        <main className="min-h-screen py-20 px-6">
-            {/* Header */}
-            <div className={cn("p-10 rounded-3xl mb-12 text-center relative overflow-hidden", lesson.color.replace("bg-", "bg-opacity-10 "))}>
-                <div className="max-w-4xl mx-auto relative z-10">
-                    <div className="flex justify-center gap-4 mb-6">
-                        <span className="px-4 py-1.5 rounded-full bg-white dark:bg-gray-800 text-sm font-bold shadow-sm flex items-center gap-2">
-                            <Clock size={16} /> {lesson.duration}
-                        </span>
-                        <div className="flex gap-2">
+        <main className="min-h-screen py-24 px-4 md:px-8 max-w-5xl mx-auto">
+
+            {/* Mission Briefing Header */}
+            <div className="relative mb-20 group perspective-1000">
+                <div className={cn(
+                    "absolute inset-0 bg-gradient-to-r from-google-blue/20 to-purple-500/20 blur-3xl -z-10 rounded-full opacity-50"
+                )} />
+
+                <div className={cn(
+                    "relative overflow-hidden rounded-[2.5rem] bg-white dark:bg-[var(--card-bg)] border border-gray-200 dark:border-[var(--card-border)] p-8 md:p-12 shadow-2xl transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)]"
+                )}>
+                    <div className="flex flex-col md:flex-row justify-between items-start gap-6 mb-8">
+                        <div className="flex items-center gap-3">
+                            <div className={cn(
+                                "flex items-center justify-center w-12 h-12 rounded-xl text-xl font-black shadow-inner",
+                                lesson.color
+                            )}>
+                                {id}
+                            </div>
+                            <span className="text-sm font-bold tracking-widest uppercase text-gray-500">Mission Briefing</span>
+                        </div>
+
+                        <div className="flex gap-2 flex-wrap">
+                            <span className="px-4 py-1.5 rounded-lg bg-gray-100 dark:bg-gray-800 text-sm font-mono font-bold flex items-center gap-2">
+                                <Clock size={16} /> {lesson.duration}
+                            </span>
                             {lesson.tags.map(tag => (
-                                <span key={tag} className="px-3 py-1.5 rounded-full bg-white/50 dark:bg-gray-800/50 text-sm font-medium">
-                                    # {tag}
+                                <span key={tag} className="px-3 py-1.5 rounded-lg border border-gray-200 dark:border-gray-700 text-sm font-bold text-gray-500">
+                                    #{tag}
                                 </span>
                             ))}
                         </div>
                     </div>
 
-                    <h1 className="text-4xl md:text-6xl font-black mb-6 tracking-tight">{lesson.title}</h1>
-                    <p className="text-xl opacity-80 max-w-2xl mx-auto mb-8">{lesson.description}</p>
+                    <h1 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter dark:text-white font-display uppercase leading-[0.9]">
+                        {lesson.title.split(":")[1]?.trim() || lesson.title}
+                    </h1>
 
-                    <div className="inline-flex items-center gap-3 bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm md:text-lg">
-                        <span className="text-2xl">🎯</span>
-                        <span className="font-bold">{lesson.goal}</span>
+                    <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mb-10 font-medium leading-relaxed">
+                        {lesson.description}
+                    </p>
+
+                    <div className="inline-flex items-center gap-4 bg-gray-50 dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+                        <div className="w-10 h-10 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400">
+                            <Target size={20} />
+                        </div>
+                        <div>
+                            <div className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Main Objective</div>
+                            <div className="font-bold text-lg dark:text-white">{lesson.goal}</div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            {/* Content */}
-            <div className="max-w-4xl mx-auto space-y-16">
+            {/* Mission Content Steps */}
+            <div className="space-y-12 relative">
+                <div className="absolute left-8 md:left-10 top-0 bottom-0 w-1 bg-gray-200 dark:bg-gray-800 -z-10" />
+
                 {lesson.topics.map((topic, i) => (
-                    <section key={i} className="relative pl-8 border-l-2 border-gray-100 dark:border-gray-800">
-                        <div className="absolute -left-[17px] top-0 w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 border-4 border-white dark:border-gray-900 flex items-center justify-center font-bold text-sm">
+                    <section key={i} className="relative pl-20 md:pl-24">
+                        <div className="absolute left-4 md:left-6 top-0 w-8 h-8 md:w-10 md:h-10 rounded-xl bg-white dark:bg-gray-900 border-4 border-gray-100 dark:border-gray-800 flex items-center justify-center font-black text-sm z-10 shadow-lg">
                             {i + 1}
                         </div>
 
-                        <div className="mb-6">
-                            <div className="flex items-center gap-3 mb-2">
+                        <div className="mb-6 group">
+                            <div className="flex items-center gap-3 mb-3">
                                 <span className={cn(
-                                    "text-xs font-bold uppercase tracking-wider px-2 py-1 rounded",
-                                    topic.type === "Concept" ? "bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-200" :
-                                        topic.type === "Demo" ? "bg-purple-100 text-purple-700 dark:bg-purple-900/50 dark:text-purple-200" :
-                                            "bg-green-100 text-green-700 dark:bg-green-900/50 dark:text-green-200"
+                                    "text-[10px] font-black uppercase tracking-wider px-2 py-1 rounded",
+                                    topic.type === "Concept" ? "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300" :
+                                        topic.type === "Demo" ? "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300" :
+                                            "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
                                 )}>
                                     {topic.type}
                                 </span>
-                                <span className="text-sm text-gray-400 font-mono">{topic.duration}</span>
+                                <span className="text-sm text-gray-400 font-mono hidden md:inline-block">Time: {topic.duration}</span>
                             </div>
-                            <h2 className="text-3xl font-bold mb-4">{topic.title}</h2>
-                            <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed bg-gray-50 dark:bg-gray-800/50 p-6 rounded-2xl">
+
+                            <h2 className="text-3xl font-black mb-4 dark:text-white font-display group-hover:text-google-blue transition-colors">
+                                {topic.title}
+                            </h2>
+
+                            <div className="prose dark:prose-invert max-w-none text-lg text-gray-600 dark:text-gray-400 leading-relaxed bg-white dark:bg-[var(--card-bg)] p-8 rounded-3xl border border-gray-100 dark:border-[var(--card-border)] shadow-sm">
                                 {topic.content}
-                            </p>
+                            </div>
                         </div>
 
                         {topic.tools && (
-                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
                                 {topic.tools.map((tool) => (
                                     <Link
                                         href={tool.url}
                                         key={tool.name}
                                         target="_blank"
-                                        className="group p-4 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-all hover:shadow-md bg-white dark:bg-gray-900"
+                                        className="group flex items-center gap-4 p-4 rounded-2xl border border-gray-200 dark:border-gray-700 hover:border-google-blue dark:hover:border-google-blue transition-all bg-gray-50 dark:bg-gray-900/30 hover:bg-white dark:hover:bg-gray-800"
                                     >
-                                        <div className="flex justify-between items-start mb-2">
-                                            <h3 className="font-bold">{tool.name}</h3>
-                                            {tool.badge && (
-                                                <span className="text-[10px] px-1.5 py-0.5 rounded bg-gray-100 dark:bg-gray-800 font-bold">
-                                                    {tool.badge}
-                                                </span>
-                                            )}
+                                        <div className="w-10 h-10 rounded-xl bg-white dark:bg-gray-800 flex items-center justify-center shadow-sm text-google-blue">
+                                            <Code2 size={20} />
                                         </div>
-                                        <p className="text-sm text-gray-500 dark:text-gray-400 line-clamp-2">{tool.description}</p>
+                                        <div>
+                                            <h3 className="font-bold dark:text-white">{tool.name}</h3>
+                                            <p className="text-xs text-gray-500 font-mono mt-0.5">Recommended Tool</p>
+                                        </div>
+                                        <ChevronRight size={16} className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity text-google-blue" />
                                     </Link>
                                 ))}
                             </div>
@@ -100,18 +132,18 @@ export default async function LessonPage({ params }: { params: Promise<{ id: str
             </div>
 
             {/* Navigation Footer */}
-            <div className="max-w-4xl mx-auto mt-20 pt-10 border-t border-gray-100 dark:border-gray-800 flex justify-between">
-                <Link href="/" className="px-6 py-3 rounded-full bg-gray-100 dark:bg-gray-800 font-bold text-sm hover:bg-gray-200 transition-colors">
-                    ← 回首頁
+            <div className="mt-24 pt-10 border-t border-gray-200 dark:border-gray-800 flex flex-col md:flex-row justify-between gap-6 items-center">
+                <Link href="/" className="px-8 py-4 rounded-full bg-gray-100 dark:bg-gray-800 font-bold text-sm hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors w-full md:w-auto text-center">
+                    ← ABORT MISSION (HOME)
                 </Link>
 
                 {parseInt(id) < 2 ? (
-                    <Link href={`/lessons/${parseInt(id) + 1}`} className="px-6 py-3 rounded-full bg-black dark:bg-white text-white dark:text-black font-bold text-sm hover:opacity-80 transition-opacity flex items-center gap-2">
-                        下一課: Lesson {parseInt(id) + 1} <ArrowRight size={16} />
+                    <Link href={`/lessons/${parseInt(id) + 1}`} className="px-8 py-4 rounded-full bg-black dark:bg-white text-white dark:text-black font-black text-sm hover:scale-105 transition-transform flex items-center justify-center gap-2 w-full md:w-auto shadow-lg hover:shadow-xl">
+                        NEXT MISSION: LVL {parseInt(id) + 1} <ArrowRight size={18} />
                     </Link>
                 ) : (
-                    <Link href="/resources" className="px-6 py-3 rounded-full bg-green-500 text-white font-bold text-sm hover:bg-green-600 transition-colors flex items-center gap-2">
-                        查看資源 <CheckCircle size={16} />
+                    <Link href="/resources" className="px-8 py-4 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 text-white font-black text-sm hover:scale-105 transition-transform flex items-center justify-center gap-2 w-full md:w-auto shadow-lg hover:shadow-xl">
+                        CLAIM REWARDS <Gamepad2 size={18} />
                     </Link>
                 )}
             </div>
