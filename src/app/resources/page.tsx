@@ -15,10 +15,10 @@ export default function ResourcesPage() {
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 font-bold text-sm mb-6 border border-yellow-200 dark:border-yellow-800">
                     <Sparkles size={16} /> ITEM SHOP
                 </div>
-                <h1 className="text-6xl md:text-8xl font-black mb-6 dark:text-white font-display uppercase tracking-tight">
-                    Resource Vault
+                <h1 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter text-[var(--text-primary)] font-display uppercase leading-[0.9]">
+                    The Item Shop
                 </h1>
-                <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-medium">
+                <p className="text-xl text-[var(--text-secondary)] max-w-2xl mx-auto font-medium">
                     Equip yourself with the best tools in the game. All free, all powerful.
                 </p>
             </div>
@@ -27,7 +27,7 @@ export default function ResourcesPage() {
                 {categories.map((category) => (
                     <section key={category}>
                         <div className="flex items-center gap-4 mb-10">
-                            <h2 className="text-3xl font-black dark:text-white font-display uppercase">{category}</h2>
+                            <h2 className="text-3xl font-black text-[var(--text-primary)] font-display uppercase">{category}</h2>
                             <div className="h-1 bg-gray-200 dark:bg-gray-800 flex-1 rounded-full" />
                         </div>
 
@@ -41,7 +41,7 @@ export default function ResourcesPage() {
                                 >
                                     <div className="absolute inset-0 bg-google-blue/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                                    <div className="relative h-full p-8 rounded-[2rem] bg-white dark:bg-[var(--card-bg)] border border-gray-200 dark:border-[var(--card-border)] hover:border-google-blue dark:hover:border-google-blue transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl flex flex-col">
+                                    <div className="relative h-full p-8 rounded-[2rem] bg-[var(--card-bg)] border border-[var(--card-border)] hover:border-google-blue dark:hover:border-google-blue transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl flex flex-col">
 
                                         <div className="flex justify-between items-start mb-6">
                                             <div className="w-12 h-12 rounded-2xl bg-gray-50 dark:bg-gray-800 flex items-center justify-center text-2xl shadow-inner">
@@ -50,11 +50,11 @@ export default function ResourcesPage() {
                                             <ArrowUpRight className="opacity-0 group-hover:opacity-100 transition-opacity -translate-y-2 group-hover:translate-y-0 text-google-blue" />
                                         </div>
 
-                                        <h3 className="text-2xl font-black mb-3 dark:text-white font-display group-hover:text-google-blue transition-colors">
+                                        <h3 className="text-2xl font-black mb-3 text-[var(--text-primary)] font-display group-hover:text-google-blue transition-colors">
                                             {tool.name}
                                         </h3>
 
-                                        <p className="text-gray-600 dark:text-gray-400 mb-6 flex-1 font-medium leading-relaxed">
+                                        <p className="text-[var(--text-secondary)] mb-6 flex-1 font-medium leading-relaxed">
                                             {tool.description}
                                         </p>
 

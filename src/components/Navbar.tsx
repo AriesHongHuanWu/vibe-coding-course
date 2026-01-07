@@ -19,10 +19,10 @@ export default function Navbar() {
 
     return (
         <nav className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
-            <div className="bg-white/90 dark:bg-[#202124]/90 backdrop-blur-xl border border-gray-200 dark:border-gray-700 shadow-2xl rounded-full px-2 py-2 flex items-center gap-1 pointer-events-auto ring-1 ring-black/5 dark:ring-white/10">
+            <div className="relative z-50 flex items-center justify-between px-6 py-4 bg-[var(--card-bg)]/80 backdrop-blur-md rounded-full border border-[var(--card-border)] shadow-sm pointer-events-auto">
 
                 {/* Logo (Mobile Hidden / Desktop Small) */}
-                <Link href="/" className="px-4 font-display font-black text-lg tracking-tight hidden md:block text-gray-900 dark:text-white mr-2">
+                <Link href="/" className="text-xl font-black tracking-tighter flex items-center gap-2 text-[var(--text-primary)] mr-2">
                     VC
                 </Link>
 

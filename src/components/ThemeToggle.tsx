@@ -23,7 +23,7 @@ export function ThemeToggle() {
         <motion.button
             whileTap={{ scale: 0.9 }}
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-yellow-400 transition-colors shadow-sm hover:shadow-md relative overflow-hidden"
+            className="p-2 rounded-full bg-[var(--card-bg)] hover:bg-[var(--card-border)] text-[var(--text-primary)] transition-colors shadow-sm hover:shadow-md relative overflow-hidden"
             aria-label="Toggle Theme"
         >
             <div className="relative z-10">
