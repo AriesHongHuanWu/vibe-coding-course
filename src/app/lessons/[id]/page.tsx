@@ -39,36 +39,36 @@ export default async function LessonPage({ params }: { params: Promise<{ id: str
                             )}>
                                 {id}
                             </div>
-                            <span className="text-sm font-bold tracking-widest uppercase text-gray-500">Mission Briefing</span>
+                            <span className="text-sm font-bold tracking-widest uppercase text-gray-600">Mission Briefing</span>
                         </div>
 
                         <div className="flex gap-2 flex-wrap">
-                            <span className="px-4 py-1.5 rounded-lg bg-gray-100 dark:bg-gray-800 text-sm font-mono font-bold flex items-center gap-2">
+                            <span className="px-4 py-1.5 rounded-lg bg-gray-100 dark:bg-gray-800 text-sm font-mono font-bold flex items-center gap-2 text-gray-700 dark:text-gray-300">
                                 <Clock size={16} /> {lesson.duration}
                             </span>
                             {lesson.tags.map(tag => (
-                                <span key={tag} className="px-3 py-1.5 rounded-lg border border-gray-200 dark:border-gray-700 text-sm font-bold text-gray-500">
+                                <span key={tag} className="px-3 py-1.5 rounded-lg border border-gray-200 dark:border-gray-700 text-sm font-bold text-gray-700 dark:text-gray-400">
                                     #{tag}
                                 </span>
                             ))}
                         </div>
                     </div>
 
-                    <h1 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter dark:text-white font-display uppercase leading-[0.9]">
+                    <h1 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter text-gray-900 dark:text-white font-display uppercase leading-[0.9]">
                         {lesson.title.split(":")[1]?.trim() || lesson.title}
                     </h1>
 
-                    <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mb-10 font-medium leading-relaxed">
+                    <p className="text-xl md:text-2xl text-gray-800 dark:text-gray-300 max-w-3xl mb-10 font-medium leading-relaxed">
                         {lesson.description}
                     </p>
 
-                    <div className="inline-flex items-center gap-4 bg-gray-50 dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+                    <div className="inline-flex items-center gap-4 bg-gray-50 dark:bg-gray-900/50 p-6 rounded-2xl border border-gray-200 dark:border-gray-800">
                         <div className="w-10 h-10 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400">
                             <Target size={20} />
                         </div>
                         <div>
-                            <div className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Main Objective</div>
-                            <div className="font-bold text-lg dark:text-white">{lesson.goal}</div>
+                            <div className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Main Objective</div>
+                            <div className="font-bold text-lg text-gray-900 dark:text-white">{lesson.goal}</div>
                         </div>
                     </div>
                 </div>

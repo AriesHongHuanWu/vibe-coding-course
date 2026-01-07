@@ -94,7 +94,7 @@ export function ClassSelectionQuiz() {
                             <h2 className="text-4xl md:text-6xl font-black mb-6 font-display dark:text-white">
                                 探索你的<br />天賦職業
                             </h2>
-                            <p className="text-xl text-gray-500 dark:text-gray-400 max-w-lg mx-auto">
+                            <p className="text-xl text-gray-700 dark:text-gray-400 max-w-lg mx-auto">
                                 你是注重視覺的「煉金術士」，還是掌控邏輯的「架構師」？<br />
                                 回答 3 個問題，找出最適合你的 AI 工具。
                             </p>
@@ -157,7 +157,7 @@ export function ClassSelectionQuiz() {
                                     <span className="block text-2xl mt-2 text-gray-400 font-sans tracking-wide">煉金術士 (視覺型)</span>
                                 </h2>
                             </div>
-                            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-lg mx-auto">
+                            <p className="text-xl text-gray-700 dark:text-gray-300 max-w-lg mx-auto">
                                 你對畫面有極高的敏感度，喜歡快速看到成果。你不應該浪費時間在繁瑣的語法上。
                             </p>
 
@@ -195,7 +195,7 @@ export function ClassSelectionQuiz() {
                                     <span className="block text-2xl mt-2 text-gray-400 font-sans tracking-wide">架構師 (邏輯型)</span>
                                 </h2>
                             </div>
-                            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-lg mx-auto">
+                            <p className="text-xl text-gray-700 dark:text-gray-300 max-w-lg mx-auto">
                                 你喜歡掌控細節，享受邏輯搭建的過程。你需要最強大的編輯器來輔助你的大腦。
                             </p>
 
