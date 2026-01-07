@@ -45,21 +45,47 @@ function TimelineItem({ lesson, index }: { lesson: SyllabusItem; index: number }
                     {index + 1}
                 </div>
 
-                <div className={cn(
-                    "inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4",
-                    lesson.color
-                )}>
-                    {lesson.tags.join(" • ")}
+                <div className="flex flex-wrap items-center gap-3 mb-4">
+                    <div className={cn(
+                        "inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider",
+                        lesson.color
+                    )}>
+                        {lesson.tags.join(" • ")}
+                    </div>
+                    <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                        ⏱️ {lesson.duration}
+                    </span>
                 </div>
 
                 <h3 className="text-3xl font-bold mb-2">{lesson.title}</h3>
-                <p className="text-lg text-gray-600 border-b border-gray-100 pb-6 mb-6">{lesson.description}</p>
+                <p className="text-lg text-gray-600 dark:text-gray-300 mb-4">{lesson.description}</p>
+
+                {/* Goal Box */}
+                <div className="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700 mb-8 flex gap-3">
+                    <div className="text-2xl">🎯</div>
+                    <div>
+                        <div className="font-bold text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-1">本課目標</div>
+                        <div className="font-medium">{lesson.goal}</div>
+                    </div>
+                </div>
 
                 <div className="space-y-8">
                     {lesson.topics.map((topic, i) => (
-                        <div key={i} className="relative pl-6 border-l-2 border-gray-200">
-                            <h4 className="text-xl font-bold mb-2 text-gray-800">{topic.title}</h4>
-                            <p className="text-gray-600 mb-4 whitespace-pre-line">{topic.content}</p>
+                        <div key={i} className="relative pl-6 border-l-2 border-gray-200 dark:border-gray-700">
+                            <div className="flex items-center gap-2 mb-2">
+                                <span className={cn(
+                                    "text-[10px] uppercase font-bold px-2 py-0.5 rounded border",
+                                    topic.type === "Concept" ? "bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-900/30 dark:text-blue-300 dark:border-blue-800" :
+                                        topic.type === "Demo" ? "bg-purple-50 text-purple-700 border-purple-200 dark:bg-purple-900/30 dark:text-purple-300 dark:border-purple-800" :
+                                            "bg-green-50 text-green-700 border-green-200 dark:bg-green-900/30 dark:text-green-300 dark:border-green-800"
+                                )}>
+                                    {topic.type}
+                                </span>
+                                <span className="text-xs text-gray-400 font-mono">{topic.duration}</span>
+                            </div>
+
+                            <h4 className="text-xl font-bold mb-2 text-gray-800 dark:text-gray-200">{topic.title}</h4>
+                            <p className="text-gray-600 dark:text-gray-400 mb-4 whitespace-pre-line">{topic.content}</p>
 
                             {topic.tools && (
                                 <div className="flex flex-wrap gap-3">
@@ -69,7 +95,7 @@ function TimelineItem({ lesson, index }: { lesson: SyllabusItem; index: number }
                                             href={tool.url}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="group flex items-center gap-2 px-4 py-2 bg-gray-50 hover:bg-white border hover:border-blue-200 rounded-xl transition-all shadow-sm hover:shadow-md"
+                                            className="group flex items-center gap-2 px-4 py-2 bg-gray-50 dark:bg-gray-800 hover:bg-white dark:hover:bg-gray-700 border dark:border-gray-700 hover:border-blue-200 rounded-xl transition-all shadow-sm hover:shadow-md"
                                         >
                                             <span className="font-semibold text-sm">{tool.name}</span>
                                             {tool.badge && (
@@ -81,7 +107,7 @@ function TimelineItem({ lesson, index }: { lesson: SyllabusItem; index: number }
                                                     {tool.badge}
                                                 </span>
                                             )}
-                                            <span className="text-xs text-gray-500 group-hover:block hidden max-w-[150px] truncate">
+                                            <span className="text-xs text-gray-500 dark:text-gray-400 group-hover:block hidden max-w-[150px] truncate">
                                                 {tool.description}
                                             </span>
                                         </a>

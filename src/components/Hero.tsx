@@ -10,7 +10,7 @@ const FloatingChip = ({ children, className, delay = 0 }: { children: React.Reac
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay, duration: 0.8, ease: "easeOut" }}
         className={cn(
-            "absolute px-4 py-2 rounded-full shadow-lg bg-white border border-gray-100 text-sm font-medium flex items-center gap-2",
+            "absolute px-4 py-2 rounded-full shadow-lg bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 text-sm font-medium flex items-center gap-2 text-gray-800 dark:text-gray-200",
             className
         )}
     >
@@ -23,8 +23,8 @@ export default function Hero() {
         <section className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden py-20">
 
             {/* Background Blobs */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-100 rounded-full blur-3xl opacity-30 animate-pulse" />
-            <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-yellow-100 rounded-full blur-3xl opacity-30 animate-pulse delay-700" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-100 dark:bg-blue-900/20 rounded-full blur-3xl opacity-30 animate-pulse" />
+            <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-yellow-100 dark:bg-yellow-900/20 rounded-full blur-3xl opacity-30 animate-pulse delay-700" />
 
             {/* Floating Chips */}
             <div className="absolute inset-0 max-w-6xl mx-auto pointer-events-none">
@@ -47,7 +47,7 @@ export default function Hero() {
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.8 }}
-                    className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-100 text-gray-800 text-xs font-semibold uppercase tracking-wider mb-6"
+                    className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800/50 text-gray-800 dark:text-gray-200 text-xs font-semibold uppercase tracking-wider mb-6"
                 >
                     <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                     High School Edition • 高中生專屬
@@ -57,7 +57,7 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="text-6xl md:text-8xl font-black tracking-tighter mb-6"
+                    className="text-6xl md:text-8xl font-black tracking-tighter mb-6 dark:text-gray-100"
                 >
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-google-blue via-google-red to-google-yellow">
                         Vibe Coding
@@ -68,9 +68,9 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
-                    className="text-xl md:text-2xl text-gray-600 mb-10 leading-relaxed max-w-2xl mx-auto"
+                    className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-10 leading-relaxed max-w-2xl mx-auto"
                 >
-                    你不需要當砌磚工人，你要當 <span className="font-bold text-gray-900 border-b-4 border-yellow-200">總導演</span>。<br />
+                    你不需要當砌磚工人，你要當 <span className="font-bold text-gray-900 dark:text-gray-100 border-b-4 border-yellow-200 dark:border-yellow-900">總導演</span>。<br />
                     用直覺與 AI 對話，讓代碼自己長出來。
                 </motion.p>
 
@@ -80,10 +80,10 @@ export default function Hero() {
                     transition={{ duration: 0.8, delay: 0.6 }}
                     className="flex flex-col sm:flex-row items-center gap-4 justify-center"
                 >
-                    <button className="px-8 py-4 bg-gray-900 text-white rounded-full font-bold hover:bg-gray-800 transition-colors flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    <button className="px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full font-bold hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                         開始課程 <ArrowRight size={20} />
                     </button>
-                    <button className="px-8 py-4 bg-white text-gray-900 border border-gray-200 rounded-full font-bold hover:bg-gray-50 transition-colors shadow-sm hover:shadow-md">
+                    <button className="px-8 py-4 bg-white dark:bg-gray-900/50 text-gray-900 dark:text-white border border-gray-200 dark:border-gray-700 rounded-full font-bold hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors shadow-sm hover:shadow-md">
                         查看講義
                     </button>
                 </motion.div>
