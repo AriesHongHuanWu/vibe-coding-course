@@ -3,18 +3,19 @@
 import { motion } from "framer-motion";
 import { type SyllabusItem, syllabus } from "@/lib/data";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 export default function SyllabusTimeline() {
     return (
         <section className="py-20 px-6 max-w-6xl mx-auto">
             <div className="text-center mb-16">
                 <h2 className="text-4xl font-bold mb-4">課程大綱</h2>
-                <p className="text-xl text-gray-600">從觀念到實戰的完整學習路徑</p>
+                <p className="text-xl text-gray-600 dark:text-gray-400">從觀念到實戰的完整學習路徑</p>
             </div>
 
             <div className="relative">
                 {/* Vertical Line */}
-                <div className="absolute left-4 md:left-8 top-0 bottom-0 w-1 bg-gray-100 hidden md:block" />
+                <div className="absolute left-4 md:left-8 top-0 bottom-0 w-1 bg-gray-100 dark:bg-gray-800 hidden md:block" />
 
                 <div className="space-y-16 pl-0 md:pl-20">
                     {syllabus.map((lesson, index) => (
@@ -37,11 +38,11 @@ function TimelineItem({ lesson, index }: { lesson: SyllabusItem; index: number }
         >
             {/* Lesson Header */}
             <div className={cn(
-                "p-8 rounded-3xl border-2 bg-white mb-6 relative overflow-hidden",
-                lesson.color.replace("bg-", "bg-opacity-10 border-")
+                "p-8 rounded-3xl border-2 bg-white dark:bg-gray-800/50 mb-6 relative overflow-hidden",
+                lesson.color.replace("bg-", "bg-opacity-10 dark:bg-opacity-10 border-")
             )}>
                 {/* Decorative Background Icon */}
-                <div className="absolute -right-10 -top-10 text-[200px] opacity-5 font-black pointer-events-none select-none">
+                <div className="absolute -right-10 -top-10 text-[200px] opacity-5 font-black pointer-events-none select-none dark:opacity-[0.02]">
                     {index + 1}
                 </div>
 
@@ -57,7 +58,9 @@ function TimelineItem({ lesson, index }: { lesson: SyllabusItem; index: number }
                     </span>
                 </div>
 
-                <h3 className="text-3xl font-bold mb-2">{lesson.title}</h3>
+                <Link href={`/lessons/${lesson.id.replace("lesson-", "")}`} className="hover:text-google-blue dark:hover:text-google-blue transition-colors inline-block">
+                    <h3 className="text-3xl font-bold mb-2">{lesson.title}</h3>
+                </Link>
                 <p className="text-lg text-gray-600 dark:text-gray-300 mb-4">{lesson.description}</p>
 
                 {/* Goal Box */}

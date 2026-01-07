@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 const FloatingChip = ({ children, className, delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => (
     <motion.div
@@ -80,12 +81,12 @@ export default function Hero() {
                     transition={{ duration: 0.8, delay: 0.6 }}
                     className="flex flex-col sm:flex-row items-center gap-4 justify-center"
                 >
-                    <button className="px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full font-bold hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    <Link href="/lessons/1" className="px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full font-bold hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                         開始課程 <ArrowRight size={20} />
-                    </button>
-                    <button className="px-8 py-4 bg-white dark:bg-gray-900/50 text-gray-900 dark:text-white border border-gray-200 dark:border-gray-700 rounded-full font-bold hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors shadow-sm hover:shadow-md">
+                    </Link>
+                    <Link href="/resources" className="px-8 py-4 bg-white dark:bg-gray-900/50 text-gray-900 dark:text-white border border-gray-200 dark:border-gray-700 rounded-full font-bold hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors shadow-sm hover:shadow-md">
                         查看講義
-                    </button>
+                    </Link>
                 </motion.div>
             </div>
         </section>

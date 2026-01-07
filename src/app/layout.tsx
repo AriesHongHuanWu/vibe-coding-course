@@ -17,6 +17,10 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 
 // ... imports remain the same
 
+import Navbar from "@/components/Navbar";
+
+// ... imports remain the same
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -31,10 +35,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="fixed top-6 right-6 z-50">
-            <ThemeToggle />
+          <Navbar />
+          <div className="pt-16">
+            {children}
           </div>
-          {children}
         </ThemeProvider>
       </body>
     </html>
