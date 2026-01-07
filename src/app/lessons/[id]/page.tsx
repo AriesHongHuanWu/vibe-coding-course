@@ -43,11 +43,11 @@ export default async function LessonPage({ params }: { params: Promise<{ id: str
                         </div>
 
                         <div className="flex gap-2 flex-wrap">
-                            <span className="px-4 py-1.5 rounded-lg bg-gray-100 dark:bg-gray-800 text-sm font-mono font-bold flex items-center gap-2 text-gray-700 dark:text-gray-300">
+                            <span className="px-4 py-1.5 rounded-lg bg-[var(--card-bg)] border border-[var(--card-border)] text-sm font-mono font-bold flex items-center gap-2 text-[var(--text-secondary)]">
                                 <Clock size={16} /> {lesson.duration}
                             </span>
                             {lesson.tags.map(tag => (
-                                <span key={tag} className="px-3 py-1.5 rounded-lg border border-gray-200 dark:border-gray-700 text-sm font-bold text-gray-700 dark:text-gray-400">
+                                <span key={tag} className="px-3 py-1.5 rounded-lg border border-[var(--card-border)] text-sm font-bold text-[var(--text-tertiary)]">
                                     #{tag}
                                 </span>
                             ))}
@@ -67,8 +67,8 @@ export default async function LessonPage({ params }: { params: Promise<{ id: str
                             <Target size={20} />
                         </div>
                         <div>
-                            <div className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Main Objective</div>
-                            <div className="font-bold text-lg text-gray-900 dark:text-white">{lesson.goal}</div>
+                            <div className="text-xs font-bold uppercase tracking-wider text-[var(--text-tertiary)] mb-1">Main Objective</div>
+                            <div className="font-bold text-lg text-[var(--text-primary)]">{lesson.goal}</div>
                         </div>
                     </div>
                 </div>
@@ -97,11 +97,11 @@ export default async function LessonPage({ params }: { params: Promise<{ id: str
                                 <span className="text-sm text-gray-400 font-mono hidden md:inline-block">Time: {topic.duration}</span>
                             </div>
 
-                            <h2 className="text-3xl font-black mb-4 dark:text-white font-display group-hover:text-google-blue transition-colors">
+                            <h2 className="text-3xl font-black mb-4 text-[var(--text-primary)] font-display group-hover:text-google-blue transition-colors">
                                 {topic.title}
                             </h2>
 
-                            <div className="prose dark:prose-invert max-w-none text-lg text-gray-600 dark:text-gray-400 leading-relaxed bg-white dark:bg-[var(--card-bg)] p-8 rounded-3xl border border-gray-100 dark:border-[var(--card-border)] shadow-sm">
+                            <div className="prose dark:prose-invert max-w-none text-lg text-[var(--text-secondary)] leading-relaxed bg-[var(--card-bg)] p-8 rounded-3xl border border-[var(--card-border)] shadow-sm">
                                 {topic.content}
                             </div>
                         </div>
@@ -113,14 +113,14 @@ export default async function LessonPage({ params }: { params: Promise<{ id: str
                                         href={tool.url}
                                         key={tool.name}
                                         target="_blank"
-                                        className="group flex items-center gap-4 p-4 rounded-2xl border border-gray-200 dark:border-gray-700 hover:border-google-blue dark:hover:border-google-blue transition-all bg-gray-50 dark:bg-gray-900/30 hover:bg-white dark:hover:bg-gray-800"
+                                        className="group flex items-center gap-4 p-4 rounded-2xl border border-[var(--card-border)] hover:border-google-blue dark:hover:border-google-blue transition-all bg-[var(--card-bg)] hover:shadow-md"
                                     >
-                                        <div className="w-10 h-10 rounded-xl bg-white dark:bg-gray-800 flex items-center justify-center shadow-sm text-google-blue">
+                                        <div className="w-10 h-10 rounded-xl bg-gray-50 dark:bg-gray-800 flex items-center justify-center shadow-sm text-google-blue">
                                             <Code2 size={20} />
                                         </div>
                                         <div>
-                                            <h3 className="font-bold dark:text-white">{tool.name}</h3>
-                                            <p className="text-xs text-gray-500 font-mono mt-0.5">Recommended Tool</p>
+                                            <h3 className="font-bold text-[var(--text-primary)]">{tool.name}</h3>
+                                            <p className="text-xs text-[var(--text-tertiary)] font-mono mt-0.5">Recommended Tool</p>
                                         </div>
                                         <ChevronRight size={16} className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity text-google-blue" />
                                     </Link>
