@@ -80,7 +80,7 @@ export default async function LessonPage({ params }: { params: Promise<{ id: str
 
                 {lesson.topics.map((topic, i) => (
                     <section key={i} className="relative pl-20 md:pl-24">
-                        <div className="absolute left-4 md:left-6 top-0 w-8 h-8 md:w-10 md:h-10 rounded-xl bg-white dark:bg-gray-900 border-4 border-gray-100 dark:border-gray-800 flex items-center justify-center font-black text-sm z-10 shadow-lg">
+                        <div className="absolute left-4 md:left-6 top-0 w-8 h-8 md:w-10 md:h-10 rounded-xl bg-white border-4 border-gray-100 dark:border-gray-800 flex items-center justify-center font-black text-sm z-10 shadow-lg text-gray-900">
                             {i + 1}
                         </div>
 
