@@ -1,13 +1,13 @@
 import BentoGrid from "@/components/BentoGrid";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
-import SyllabusTimeline from "@/components/SyllabusTimeline";
+import LearningPath from "@/components/LearningPath";
 
 export default function Home() {
   return (
     <main className="min-h-screen">
       <Hero />
-      <SyllabusTimeline />
+      <LearningPath />
       <BentoGrid />
       <Footer />
     </main>
