@@ -91,10 +91,10 @@ export function ClassSelectionQuiz() {
                             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 font-bold text-sm">
                                 <Bot size={18} /> Vibe Sorting Hat
                             </div>
-                            <h2 className="text-4xl md:text-6xl font-black mb-6 font-display dark:text-white">
+                            <h2 className="text-4xl md:text-6xl font-black mb-6 font-display text-[var(--text-primary)]">
                                 探索你的<br />天賦職業
                             </h2>
-                            <p className="text-xl text-gray-700 dark:text-gray-400 max-w-lg mx-auto">
+                            <p className="text-xl text-[var(--text-secondary)] max-w-lg mx-auto">
                                 你是注重視覺的「煉金術士」，還是掌控邏輯的「架構師」？<br />
                                 回答 3 個問題，找出最適合你的 AI 工具。
                             </p>
@@ -119,7 +119,7 @@ export function ClassSelectionQuiz() {
                             <div className="text-sm font-bold text-gray-400 mb-8 uppercase tracking-widest">
                                 Question {step} / {questions.length}
                             </div>
-                            <h3 className="text-3xl md:text-4xl font-bold mb-12 dark:text-white">
+                            <h3 className="text-3xl md:text-4xl font-bold mb-12 text-[var(--text-primary)]">
                                 {questions[step - 1].text}
                             </h3>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -130,7 +130,7 @@ export function ClassSelectionQuiz() {
                                         className="p-8 rounded-3xl bg-gray-50 dark:bg-gray-800 border-2 border-transparent hover:border-google-blue dark:hover:border-google-blue hover:text-google-blue dark:hover:text-google-blue transition-all group text-left group"
                                     >
                                         <option.icon size={48} className="mb-6 text-gray-400 group-hover:text-google-blue transition-colors" />
-                                        <div className="text-xl font-bold dark:text-white group-hover:text-current">
+                                        <div className="text-xl font-bold text-[var(--text-primary)] group-hover:text-current">
                                             {option.text}
                                         </div>
                                     </button>

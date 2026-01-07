@@ -54,11 +54,11 @@ export default async function LessonPage({ params }: { params: Promise<{ id: str
                         </div>
                     </div>
 
-                    <h1 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter text-gray-900 dark:text-white font-display uppercase leading-[0.9]">
+                    <h1 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter text-[var(--text-primary)] font-display uppercase leading-[0.9]">
                         {lesson.title.split(":")[1]?.trim() || lesson.title}
                     </h1>
 
-                    <p className="text-xl md:text-2xl text-gray-800 dark:text-gray-300 max-w-3xl mb-10 font-medium leading-relaxed">
+                    <p className="text-xl md:text-2xl text-[var(--text-secondary)] max-w-3xl mb-10 font-medium leading-relaxed">
                         {lesson.description}
                     </p>
 

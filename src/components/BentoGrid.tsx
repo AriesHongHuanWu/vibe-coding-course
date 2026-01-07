@@ -19,7 +19,7 @@ export default function BentoGrid() {
         <section className="py-20 px-6 max-w-6xl mx-auto">
             <div className="mb-12">
                 <h2 className="text-4xl font-bold mb-4">Vibe Toolbox (工具箱)</h2>
-                <p className="text-xl text-gray-600 dark:text-gray-400">工欲善其事，必先利其器。這是你的神級裝備。</p>
+                <p className="text-xl text-[var(--text-secondary)]">工欲善其事，必先利其器。這是你的神級裝備。</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[180px]">

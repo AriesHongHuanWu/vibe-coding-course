@@ -29,10 +29,10 @@ export default function LearningPath() {
                 >
                     <Gamepad2 size={18} /> WORLD MAP SELECT
                 </motion.div>
-                <h2 className="text-6xl md:text-8xl font-black mb-8 tracking-tighter dark:text-white uppercase font-display">
+                <h2 className="text-6xl md:text-8xl font-black mb-8 tracking-tighter text-[var(--text-primary)] uppercase font-display">
                     Level Select
                 </h2>
-                <p className="text-2xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-medium">
+                <p className="text-2xl text-[var(--text-secondary)] max-w-2xl mx-auto font-medium">
                     Choose your mission. Unlock new skills. Defeat the final boss.
                 </p>
             </div>
@@ -108,7 +108,7 @@ function LevelCard({ lesson, index }: { lesson: SyllabusItem; index: number }) {
                     <motion.div
                         whileHover={{ rotateY: isEven ? 5 : -5, scale: 1.02 }}
                         className={cn(
-                            "relative overflow-hidden rounded-[2.5rem] bg-white dark:bg-[var(--card-bg)] border-2 border-transparent p-1 shadow-2xl transition-all duration-500",
+                            "relative overflow-hidden rounded-[2.5rem] bg-white dark:bg-[var(--card-bg)] border border-[var(--glass-border)] p-1 shadow-2xl transition-all duration-500",
                             "hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)]",
                             "group-hover:border-[var(--card-hover-border)]"
                         )}
@@ -134,11 +134,11 @@ function LevelCard({ lesson, index }: { lesson: SyllabusItem; index: number }) {
                                 </div>
                             </div>
 
-                            <h3 className="text-4xl md:text-5xl font-black mb-6 leading-[0.9] text-gray-900 dark:text-white group-hover:text-google-blue transition-colors font-display">
+                            <h3 className="text-4xl md:text-5xl font-black mb-6 leading-[0.9] text-[var(--text-primary)] group-hover:text-google-blue transition-colors font-display">
                                 {lesson.title.split(":")[1]?.trim() || lesson.title}
                             </h3>
 
-                            <p className="text-lg text-gray-700 dark:text-gray-400 mb-8 font-medium leading-relaxed">
+                            <p className="text-lg text-[var(--text-secondary)] mb-8 font-medium leading-relaxed">
                                 {lesson.description}
                             </p>
 

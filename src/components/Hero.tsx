@@ -58,7 +58,7 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="text-6xl md:text-8xl font-black tracking-tighter mb-6 dark:text-gray-100"
+                    className="text-6xl md:text-8xl font-black tracking-tighter mb-6 text-[var(--text-primary)]"
                 >
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-google-blue via-google-red to-google-yellow">
                         Vibe Coding
@@ -69,9 +69,9 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
-                    className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-10 leading-relaxed max-w-2xl mx-auto"
+                    className="text-xl md:text-2xl text-[var(--text-secondary)] mb-10 leading-relaxed max-w-2xl mx-auto"
                 >
-                    你不需要當砌磚工人，你要當 <span className="font-bold text-gray-900 dark:text-gray-100 border-b-4 border-yellow-200 dark:border-yellow-900">總導演</span>。<br />
+                    你不需要當砌磚工人，你要當 <span className="font-bold text-[var(--text-primary)] border-b-4 border-yellow-200 dark:border-yellow-900">總導演</span>。<br />
                     用直覺與 AI 對話，讓代碼自己長出來。
                 </motion.p>
 
