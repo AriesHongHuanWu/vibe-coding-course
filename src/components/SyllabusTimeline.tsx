@@ -82,7 +82,7 @@ function TimelineItem({ lesson, index }: { lesson: SyllabusItem; index: number }
                                                 </span>
                                             )}
                                             <span className="text-xs text-gray-500 group-hover:block hidden max-w-[150px] truncate">
-                                                {tool.descriptionWithoutBadge || tool.description}
+                                                {tool.description}
                                             </span>
                                         </a>
                                     ))}
